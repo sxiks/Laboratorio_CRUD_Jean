@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const require = ['DB_HOST', 'DB_USER', 'DB_NAME', 'JWT_SECRET'];
+const required = ['DB_HOST', 'DB_USER', 'DB_NAME', 'JWT_SECRET'];
 
 for (const name of required) {
     if (!process.env[name]) {
@@ -8,7 +8,7 @@ for (const name of required) {
     }
 }
 
-module.export = {
+module.exports = {
     port: Number(process.env.PORT || 3000),
     db: {
         host: process.env.DB_HOST,
