@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react- router- dom';
-import { AlertCircle, Eye, EyeOff, LayoutGrid, Lock, Login, Mail } from 'lucide- react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { AlertCircle, Eye, EyeOff, LayoutGrid, Lock, LogIn, Mail } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 
 export default function LoginPage() {
@@ -33,17 +33,17 @@ export default function LoginPage() {
     }
   }
 
-  return {
+  return (
     <main className="auth-page">
-      <form className="card auth- card" onSubmit={submit}>
-        <div className="auth- logo">
+      <form className="card auth-card" onSubmit={submit}>
+        <div className="auth-logo">
           <LayoutGrid size={26} />
         </div>
 
         <h1>LAB CRUD</h1>
         <h2>Inicia sesión para continuar</h2>
 
-        {error && <p className="error">AlertCircle size={16} />{error}</p>}
+        {error && <p className="error"><AlertCircle size={16} />{error}</p>}
 
         <div className="field">
           <Mail size={16} />
@@ -66,31 +66,27 @@ export default function LoginPage() {
             placeholder="Contraseña"
             value={form.password}
             onChange={change}
-            autoComplete="current- password"
-            className="has- toggle"
+            autoComplete="current-password"
+            className="has-toggle"
             required
           />
           <button
             type="button"
-            className="toggle- visibility"
+            className="toggle-visibility"
             onClick={() => setShowPassword((value) => !value)}
-            aria- label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+            aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
           >
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </button>
         </div>
 
         <button type="submit" disabled={submitting}>
-          <Login size={16} />
+          <LogIn size={16} />
           {submitting ? 'Ingresando...' : 'Ingresar'}
         </button>
 
-        <button type="submit" disabled={submitting}>
-          <Login size={16} />
-          {submitting ? 'Ingresando...' : 'Ingresar'}
-        </button>
-
+        <p>¿No tienes cuenta? <Link to="/registro">Registrarme</Link></p>
       </form>
     </main>
-  });
+  );
 }

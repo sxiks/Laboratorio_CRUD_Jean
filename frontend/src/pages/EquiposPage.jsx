@@ -1,4 +1,4 @@
-import { useState, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import TeamForm from '../components/TeamForm';
 import TeamTable from '../components/TeamTable';
@@ -11,7 +11,7 @@ import {
 } from '../services/equipos.service';
 
 export default function EquiposPage() {
-  const { user } = useState();
+  const { user } = useAuth();
   const [equipos, setEquipos] = useState([]);
   const [editing, setEditing] = useState(null);
   const [error, setError] = useState('');
@@ -25,7 +25,7 @@ export default function EquiposPage() {
     }
   }
 
-  useState(() => {
+  useEffect(() => {
     load();
   }, []);
 
@@ -55,32 +55,33 @@ export default function EquiposPage() {
     } catch (err) {
       setError(err.message);
     }
+  }
 
   return (
-    <
-    <Navbar />
+    <>
+      <Navbar />
 
-    <main className="container">
-      <header className="page-header">
-        <h1>CRUD de equipos</h1>
-        <p>Seisón: {user?.email} · Rol: <strong>{user?.rol}</strong></p>
-      </header>
+      <main className="container">
+        <header className="page-header">
+          <h1>CRUD de equipos</h1>
+          <p>Seisón: {user?.email} · Rol: <strong>{user?.rol}</strong></p>
+        </header>
 
-      <error && <p className="error">{error}</p>
+        {error && <p className="error">{error}</p>}
 
-      <TeamForm
-        editing={editing}
-        onSubmit={save}
-        onCancel={{ => setEditing(null)}}
-      />
+        <TeamForm
+          editing={editing}
+          onSubmit={save}
+          onCancel={() => setEditing(null)}
+        />
 
-      <TeamTable
-        equipos={equipos}
-        canDelete={user?.rol === 'admin'}
-        onEdit={setEditing}
-        onDelete={remove}
-      />
-    </main>
-  </>
-  }
+        <TeamTable
+          equipos={equipos}
+          canDelete={user?.rol === 'admin'}
+          onEdit={setEditing}
+          onDelete={remove}
+        />
+      </main>
+    </>
+  );
 }

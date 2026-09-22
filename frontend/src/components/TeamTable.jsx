@@ -1,5 +1,5 @@
 import { Package, Pencil, Trash2 } from 'lucide-react';
-import { urlImagen } from './utils/format';
+import { urlImagen } from '../utils/format';
 
 export default function TeamTable({ equipos, canDelete, onEdit, onDelete }) {
   if (!equipos.length) {
@@ -46,7 +46,7 @@ export default function TeamTable({ equipos, canDelete, onEdit, onDelete }) {
               </div>
             </div>
           );
-        }}}
+        })}
       </div>
     </div>
   );

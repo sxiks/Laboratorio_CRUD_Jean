@@ -23,14 +23,14 @@ export function createEquipo(data) {
 }
 
 export function updateEquipo(id, data) {
-  return api('/equipos/${id}', {
+  return api(`/equipos/${id}`, {
     method: 'PUT',
     body: toFormData(data)
   });
 }
 
 export function deleteEquipo(id) {
-  return api('/equipos/${id}', {
+  return api(`/equipos/${id}`, {
     method: 'DELETE'
   });
 }

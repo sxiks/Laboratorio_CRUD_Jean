@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle, Eye, EyeOff, Lock, UserPlus } from 'lucide-react';
-import { register } from './services/auth.service';
+import { register } from '../services/auth.service';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function RegisterPage() {
         <h1>LAB CRUD</h1>
         <h2>Crear usuario</h2>
 
-        {error && <p className="error"></AlertCircle size={16} />{error}</p>
+        {error && <p className="error"><AlertCircle size={16} />{error}</p>}
 
         <input name="nombre" placeholder="Nombre" value={form.nombre} onChange={change} required />
         <input name="email" type="email" placeholder="Correo" value={form.email} onChange={change} required />
@@ -56,7 +56,11 @@ export default function RegisterPage() {
             className="toggle-visibility"
             onClick={() => setShowPassword((value) => !value)}
             aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
-          />
+          >
+            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+          </button>
+        </div>
+
           <button type="submit">
             <UserPlus size={16} />
             Registrarme

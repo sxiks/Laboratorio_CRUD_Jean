@@ -7,7 +7,7 @@ import EquiposPage from './pages/EquiposPage';
 import './assets/styles.css';
 
 export default function App() {
-  return {
+  return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
@@ -23,5 +23,5 @@ export default function App() {
         </Routes>
       </AuthProvider>
     </BrowserRouter>
-  };
+  );
 }

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { LayoutGrid, LogOut } from 'lucide-react';
-import { useAuth } from './hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
 export default function Navbar() {
   const { user, logout } = useAuth();

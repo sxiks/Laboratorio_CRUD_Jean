@@ -1,5 +1,5 @@
-import { API_URL } from './config/env';
-import { getToken } from './utils/storage';
+import { API_URL } from '../config/env';
+import { getToken } from '../utils/storage';
 
 export async function api(endpoint, options = {}) {
   const token = getToken();
@@ -11,10 +11,10 @@ export async function api(endpoint, options = {}) {
   };
 
   if (token) {
-    headers.Authorization = 'Bearer ${token}';
+    headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch('${API_URL}${endpoint}', {
+  const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers
   });

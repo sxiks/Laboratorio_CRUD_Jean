@@ -22,6 +22,7 @@ export default function TeamForm({ editing, onSubmit, onCancel }) {
       ...form,
       [event.target.name]: event.target.value
     });
+  }
 
   function changeImagen(event) {
     const file = event.target.files?.[0];
@@ -40,7 +41,7 @@ export default function TeamForm({ editing, onSubmit, onCancel }) {
     if (fileInputRef.current) fileInputRef.current.value = '';
   }
 
-  return {
+  return (
     <form onSubmit={submit} className="card form-grid">
       <h2>{editing ? 'Editar equipo' : 'Nuevo equipo'}</h2>
 
@@ -49,28 +50,28 @@ export default function TeamForm({ editing, onSubmit, onCancel }) {
       <input name="modelo" placeholder="Modelo" value={form.modelo} onChange={change} />
 
       <label className="image-upload-field">
-        <span>{ImagePlus size={16} /> Imagen del equipo</span>
+        <span><ImagePlus size={16} /> Imagen del equipo</span>
         <input ref={fileInputRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={changeImagen} />
       </label>
 
-      {preview && {
+      {preview && (
         <div className="image-preview">
           <img src={preview} alt="Vista previa" />
         </div>
-      }}
+      )}
 
       <div className="actions">
         <button type="submit" className={editing ? 'edit' : ''}>
           {editing ? <Save size={16} /> : <Plus size={16} />}
           {editing ? 'Actualizar' : 'Crear'}
         </button>
-        {editing && {
+        {editing && (
           <button type="button" className="secondary" onClick={onCancel}>
             <X size={16} />
             Cancelar
           </button>
-        }}
+        )}
       </div>
     </form>
-  };
-};
+  );
+}
