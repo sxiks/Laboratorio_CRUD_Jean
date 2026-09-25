@@ -18,7 +18,15 @@ y completa las credenciales de MySQL y `JWT_SECRET`.
 
 ```bash
 npm install
+
 ```
+
+## 4. Crear carpeta para las fotos
+
+En el backend hay que crear en la raiz la carpeta Uploads y dentro de ella la carpeta equipos
+
+/backend/uploads/equipos
+
 API: `http://localhost:3000`
 
 ## Rutas
